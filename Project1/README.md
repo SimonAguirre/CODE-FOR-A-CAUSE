@@ -1,43 +1,44 @@
 ### Group Name: 
 **OUR_GROUP_NAME**
 
-### Github Link: 
+### Links: 
 [Project Codebase on Github](https://github.com/SimonAguirre/CODE-FOR-A-CAUSE)
+[Project UI Design on Figma](https://www.figma.com/files/team/1340550334215312573)
 
 ---
 
-# Project Info:
-Personal Anime Tracker
+## Project Info:
+**Personal Anime Tracker**
 
 ## Overview:
 `!TODO`
 
-## Functions:
+### Functions:
 Web-based watchlist/planner for anime fans where they can:
--list & save their favorite anime series/movie
--save & track the episode theyre currently in
--filter the list wrt favorites, recently watched, alphabetical
--search through the watchlist
+- list & save their favorite anime series/movie
+- save & track the episode theyre currently in
+- filter the list wrt favorites, recently watched, alphabetical
+- search through the watchlist
 
-## Architecture:
--Account info page
--Profile page
--Anime page
--Login/signup page
--Table(mainpage/dash)
+### Architecture:
+- Account info page
+- Profile page
+- Anime page
+- Login/signup page
+- Table(mainpage/dash)
 
-#Languages Used: 
-css (Front End)
-html (Front End)
-javascript (Front End)
-python (Back End)
+### Languages Used: 
+- css (Front End)
+- html (Front End)
+- javascript (Front End)
+- python (Back End)
 
-#Tools Used: 
-ReactJS (Front End)
-Django (Back End)
-Figma (Design)
+### Tools Used: 
+- ReactJS (Front End)
+- Django (Back End)
+- Figma (Design)
 
-## Members and respective roles:
-Kenneth - Front End
-Jacod - Back End
-Simon - Design
+### Members and respective roles:
+- Kenneth - Front End
+- Jacod - Back End
+- Simon - Design
