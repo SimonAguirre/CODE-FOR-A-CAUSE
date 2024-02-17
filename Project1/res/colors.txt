@@ -1,0 +1,15 @@
+{
+  "red-oxide": "#55140D",
+  "free-speech-red": "#C01300",
+  "classic-rose": "#EEC6D8",
+  "unknown-blue": "#3841B4",
+  "very-pale-blue": "#C8EBFF",
+  "mandy": "#DD4854",
+  "sandy-brown": "#E9A367",
+  "tusk": "#E2E7B9",
+  "chinese-black": "#161616",
+  "unknown-green": "#39B1A1",
+  "navy-blue": "#0077DD",
+  "platinum": "#E6E6E6",
+  "very-dark-gray": "#1E1E1E"
+}
