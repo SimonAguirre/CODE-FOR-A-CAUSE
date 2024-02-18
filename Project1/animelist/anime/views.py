@@ -184,7 +184,19 @@ class LoginView(APIView):
         token, c = Token.objects.get_or_create(user=user)
         serializer = UserSerializer(user)
         return Response({"token": token.key, "user":serializer.data['username']})
-    
+
+class LogOutView(APIView):
+    authentication_classes = [SessionAuthentication, TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    def post(self, request):
+        try:
+            token = request.META.get('HTTP_AUTHORIZATION').split(' ')[1]
+            token_db = Token.objects.get(key=token)
+            token_db.delete()
+            return Response(status=status.HTTP_200_OK)
+        except Token.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+            
 
 class SetListPublicView(APIView):
     authentication_classes = [SessionAuthentication, TokenAuthentication]
