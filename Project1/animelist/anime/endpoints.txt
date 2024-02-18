@@ -1,0 +1,274 @@
+#################################################
+login endpoint
+
+/anime/login POST
+
+returns
+{
+	"token": "c8b639838a3245be33eb3a7e373348f04e0c793d",
+	"user": "user1"
+}
+
+
+
+#################################################
+sign up end point
+
+/anime/signup POST
+
+returns 
+{
+	"token": "73a280a572d474695aa4bd6d47d189f7c02a6d28"
+}
+
+
+
+#################################################
+eto yung pagkuha ng username ng user 
+
+/anime/username GET token required
+
+returns
+"username"
+
+
+
+#################################################
+eto yung pagkuha ng lahat ng anime sa list ng user
+
+/anime/mylist GET token required
+
+returns
+[
+    {
+        "id": 5,
+        "name": "Tengoku Daimakyou",
+        "genres": "Adventure-Mystery-Sci-Fi-",
+        "num_of_eps": "13",
+        "img": "https://cdn.myanimelist.net/images/anime/1121/133132.jpg",
+        "rating": 5,
+        "favorite": true,
+        "comment": "lorem ipsum an all that shit",
+        "current_episode": 5,
+        "owner": "user3",
+        "status": "Finished"
+    },
+    ...
+]
+
+
+
+#################################################
+eto yung pagkuha ng lahat ng anime sa top 50 animes
+
+/anime/animelist GET 
+
+returns
+[
+	{
+		"id": 1,
+		"name": "Vinland Saga Season 2",
+		"genres": "Action-Adventure-Drama-",
+		"num_of_eps": 24,
+		"img": "https://cdn.myanimelist.net/images/anime/1170/124312.jpg"
+	},
+	{
+		"id": 2,
+		"name": "Tomo-chan wa Onnanoko!",
+		"genres": "Comedy-Romance-",
+		"num_of_eps": 13,
+		"img": "https://cdn.myanimelist.net/images/anime/1444/131828.jpg"
+	},
+]
+
+
+
+#################################################
+eto yung list ng lahat ng user na naka publik yung list
+
+anime/public-list GET 
+
+returns
+[
+	{
+		"user": "user3",
+		"id": 2
+	},
+	{
+		"user": "user1",
+		"id": 3
+	}
+]
+
+
+
+#################################################
+eto ay kung gusto mo ipublic o private yung list mo. true or false lang
+
+anime/set-public-status POST
+
+body/json to be sent:
+{
+	"public": true
+}
+returns
+"set to public" or "set to private"
+
+
+
+#################################################
+eto yung pag add ng anime sa list mo
+pwede mo ibigay yung id ng nasa top 5 para autofill na
+tas pag bago na anime na wala sa top 50 ay gawin mong -1 ang id
+
+anime/add-anime POST token required
+
+body/json to be sent:
+anime already in top 50
+{
+	"id": 35,
+	"rating": 1,
+	"favorite": true,
+	"comment": "this is a comment missing body",
+	"current_episode": 1,
+	"status": "Watching",
+}
+anime not in top 50
+{
+	"id": -1,
+	"rating": 1,
+	"favorite": true,
+	"comment": "this is a comment missing body",
+	"current_episode": 1,
+	"status": "Watching",
+	
+	"name": "name of anime",
+	"genres": "genres of anime",
+	"num_of_eps": 12,
+	"img": "link to image"
+}
+
+
+
+#################################################
+eto sa pagupdata ng anime sa iyong list
+yung <int:id> ay yung id na nakabigay pag hiningi mo list mo
+sample niyan ay: /anime/5/update-anime
+
+/anime/mylist/<int:id>/update-anime PUT token required
+
+body/json to be sent:
+{
+	"rating": 1,
+	"favorite": true,
+	"comment": "this is a comment missing body",
+	"current_episode": 1,
+	"status": "Watching"
+}
+returns
+success:
+202
+failed:
+404, 401
+
+
+
+#################################################
+eto yung sa pag delete 
+
+/anime/mylist/<int:id>/delete-anime
+
+returns
+success:
+202
+failed:
+404, 401
+
+
+
+#################################################
+eto yung pag hihingin mo details ng anime sa list mo given ang id nya
+
+/anime/mylist/<int:id> GET token required
+
+returns
+{
+	"id": 6,
+	"name": "Mashle",
+	"genres": "Action-Comedy-Fantasy-",
+	"num_of_eps": "12",
+	"img": "https://cdn.myanimelist.net/images/anime/1218/135107.jpg",
+	"rating": 6,
+	"favorite": true,
+	"comment": "lorem ipsum an all that shit",
+	"current_episode": 3,
+	"owner": "user3",
+	"status": "Plan to Watch"
+}
+
+
+
+#################################################
+eto naman ay detail ng anime sa top 50 given yung id nya
+
+/anime/mylist/<int:id> GET 
+
+returns
+{
+	"name": "Tomo-chan wa Onnanoko!",
+	"genres": "Comedy-Romance-",
+	"num_of_eps": 13,
+	"img": "https://cdn.myanimelist.net/images/anime/1444/131828.jpg"
+}
+
+
+
+#################################################
+eto naman ay yung animelist ng public user
+
+/anime/public-list/<int:id> GET
+
+returns
+[
+	{
+		"id": 1,
+		"name": "Vinland Saga Season 2",
+		"genres": "Action-Adventure-Drama-",
+		"num_of_eps": "24",
+		"img": "https://cdn.myanimelist.net/images/anime/1170/124312.jpg",
+		"rating": 4,
+		"favorite": true,
+		"comment": "lorem ipsum an all that shit",
+		"current_episode": 5,
+		"owner": "user1",
+		"status": "Finished"
+	},
+    ...
+]
+
+
+
+
+#################################################
+eto naman ay yung details ng anime sa animelist ng public user
+
+/anime/public-list/<int:id> GET
+
+returns
+{
+	"id": 14,
+	"name": "Vinland Saga Season 2",
+	"genres": "Action-Adventure-Drama-",
+	"num_of_eps": "24",
+	"img": "https://cdn.myanimelist.net/images/anime/1170/124312.jpg",
+	"rating": 5,
+	"favorite": true,
+	"comment": "lorem ipsum an all that shit",
+	"current_episode": 5,
+	"owner": "user4",
+	"status": "Finished"
+}
+
+
+
+
